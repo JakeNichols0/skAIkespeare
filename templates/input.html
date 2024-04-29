@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+  <form action="/analysis" method="post">
+    <textarea name="text" rows="30" cols="60" placeholder="Enter text here""></textarea>
+    <br>
+    <input type="submit">
+  </form>
+</div>
+
+{% endblock %}
