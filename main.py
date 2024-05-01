@@ -10,10 +10,21 @@ app = fk.Flask(
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=80)
 
-@app.route('/')
-def index():
-    return rt("input.html")
+def load_input(text="",error=""):
+  return rt('input.html', text=escape(text), error=escape(error))
 
-@app.route('/analysis', methods=['POST'])
+@app.route('/', methods = ['GET', 'POST'])
+def index():
+  method = fk.request.method
+  if method == 'POST':
+    text = fk.request.form['text']
+    if not text:
+      return load_input(text, "No text entered")
+    else:
+      return redirect(url_for('analysis'), 308)
+  return load_input()
+
+@app.route('/analysis', methods=['GET', 'POST'])
 def analysis():
-  return rt("analysis.html", text=escape(fk.request.form['text']))
+  text=escape(fk.request.form['text'])
+  return rt("analysis.html", text=text)

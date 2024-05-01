@@ -8,6 +8,11 @@ authors = ["Your Name <you@example.com>"]
 python = ">=3.10.0,<3.11"
 flask = "^3.0.0"
 gunicorn = "^21.2.0"
+matplotlib = "^3.8.4"
+nltk = "^3.8.1"
+pandas = "^2.2.2"
+numpy = "^1.26.4"
+scikit-learn = "^1.4.2"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md

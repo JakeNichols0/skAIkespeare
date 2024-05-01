@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<h1><b>Welcome to ShAIkespeare!</b></h1>
+<p id="AI"> The AI that will help you read Shakespeare with the help of image-generation AI!</p>
 <div>
-  <form action="/analysis" method="post">
-    <textarea name="text" rows="30" cols="60" placeholder="Enter text here""></textarea>
+  <form action="/" method="post">
+    <textarea name="text" rows="30" cols="60" placeholder="Enter text here...." value="{{text}}"></textarea>
     <br>
     <input type="submit">
   </form>
+  <p id="error">{{error}}</p>
 </div>
 
 {% endblock %}

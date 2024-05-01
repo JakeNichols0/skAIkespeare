@@ -1,0 +1,68 @@
+input {
+	background-color: #001161;
+	color: #fb3d52;
+	width: 100px;
+	height: 50px;
+	border: 5px solid #001161;
+	border-radius: 15px;
+	font-weight: 800;
+	font-size: 14px;
+  font-family: 'Open Sans';
+	rotate: 90deg;
+}
+input:hover {
+	background-color: #3e4770;
+}
+textarea {
+	border: 5px inset #3e4770;
+	border-radius: 10px;
+}
+#AI {
+  font-size: 14px;
+  border: 2px solid #FF474C;
+  border-radius: 10px;
+  background-color: #001161;
+  color: #ff0000;
+  text-align: center;
+}
+h1 {
+  font-family: "Papyrus", fantasy;
+  border: 5px outset #FF474C;
+  border-radius: 10px;
+  background-color: #001161;
+  color: #ff0000;
+  text-align: center;
+  
+}
+#error{
+  color: #ff0000;
+  font-size: 50px;
+}
+body {
+	background-color: #001161;
+  font-family: "Papyrus", fantasy;
+}
+p.input {
+	color: #ffffff;
+}
+#skillissue {
+  color: #000000;
+}
+td#in, td#out {
+	width: 50%;
+}
+td#in {
+	background-color: #000000;
+	color: #ffffff;
+}
+td#out {
+	background-color: #ffffff;
+	color: #000000;
+}
+table#ItBurns {
+	width: 100%;
+	min-height: 90vh;
+}
+a#shh {
+	text-decoration: none;
+}
