@@ -4,11 +4,14 @@
 <table id="ItBurns">
 	<tr>
 		<td id="in">
-		  <p class="input">{{text}}</p>
+		  <p class="input">{{text_in}}</p>
 		  <p id="skillissue">it's not that deep... be smarter...</p>
 		</td>
 		<td id="out">
-			<p>Ha! Ha!</p>
+			<p id="Green">Green = Metaphor</p>
+			{% for line in lines %}
+			<p style='background-color:{{line[1]}};'>{{line[0]}}</p>
+			{% endfor %}
 		</td>
 	</tr>
 </table>

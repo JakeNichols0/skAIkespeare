@@ -8,7 +8,6 @@ input {
 	font-weight: 800;
 	font-size: 14px;
   font-family: 'Open Sans';
-	rotate: 90deg;
 }
 input:hover {
 	background-color: #3e4770;
@@ -16,6 +15,7 @@ input:hover {
 textarea {
 	border: 5px inset #3e4770;
 	border-radius: 10px;
+	font-family: papyrus;
 }
 #AI {
   font-size: 14px;
@@ -63,6 +63,6 @@ table#ItBurns {
 	width: 100%;
 	min-height: 90vh;
 }
-a#shh {
-	text-decoration: none;
+#Green {
+	color: #006110
 }
