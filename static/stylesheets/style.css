@@ -1,46 +1,49 @@
-input {
-	background-color: #001161;
+input.sub, button {
+	background-color: #212121;
 	color: #fb3d52;
 	width: 100px;
 	height: 50px;
-	border: 5px solid #001161;
+	border: 1px solid #212121;
 	border-radius: 15px;
 	font-weight: 800;
 	font-size: 14px;
-  font-family: 'Open Sans';
+  font-family: 'Trebuchet MS';
 }
-input:hover {
+input.sub:hover, button:hover {
 	background-color: #3e4770;
 }
 textarea {
-	border: 5px inset #3e4770;
+	border: 1px solid #212121;
 	border-radius: 10px;
-	font-family: papyrus;
+	width: 50vw;
+}
+form {
+	margin-left: 25vw;
+	margin-right: 25vw;
 }
 #AI {
   font-size: 14px;
-  border: 2px solid #FF474C;
+	font-family: 'Trebuchet MS';
   border-radius: 10px;
-  background-color: #001161;
   color: #ff0000;
   text-align: center;
 }
 h1 {
-  font-family: "Papyrus", fantasy;
-  border: 5px outset #FF474C;
+	font-family: "sabbath-black", serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 48px;
   border-radius: 10px;
-  background-color: #001161;
   color: #ff0000;
   text-align: center;
-  
 }
 #error{
   color: #ff0000;
   font-size: 50px;
 }
 body {
-	background-color: #001161;
-  font-family: "Papyrus", fantasy;
+	background-color: #212121;
+  font-family: 'Trebuchet MS';
 }
 p.input {
 	color: #ffffff;
@@ -50,6 +53,7 @@ p.input {
 }
 td#in, td#out {
 	width: 50%;
+	padding: 10px;
 }
 td#in {
 	background-color: #000000;
@@ -64,5 +68,15 @@ table#ItBurns {
 	min-height: 90vh;
 }
 #Green {
-	color: #006110
+	color: lightgreen;
+}
+#log {
+	float: right;
+}
+div.logDiv {
+	overflow: auto;
+}
+label {
+	font-family: 'Trebuchet MS';
+	color: #fb3d52;
 }

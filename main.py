@@ -15,16 +15,14 @@ def load_input(text="", error=""):
 
 
 def check_line(line):
+  #metaphors
   loaded_model = pickle.load(open('finalized_model.sav', 'rb'))
   vectorizer = pickle.load(open('vectorizer.sav', 'rb'))
   
   modelAns = loaded_model.predict(vectorizer.transform([line]))
   print(modelAns)
+  return modelAns
   
-  if (modelAns == 1):
-    print("This is a metaphor.")
-    return True
-  return False
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -41,12 +39,22 @@ def index():
 
 @app.route('/analysis', methods=['GET', 'POST'])
 def analysis():
-  text = escape(fk.request.form['text'])
+  text = fk.request.form['text']
   textSplit = text.splitlines()
   lines = []
   for line in textSplit:
-    color = "None"
-    if check_line(line):
-      color="lightgreen"
+    color = ""
+    match check_line(line):
+      case 1:
+        color = "lightgreen"
+      case 2:
+        color = "lightblue"
+      case _:
+        color = "None"
     lines.append([line, color])
   return rt("analysis.html", text_in=text, lines=lines)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+  return rt("login.html")
