@@ -12,11 +12,10 @@
 					{{j}}<br><br>
 				 {% endfor %}
 			</p>
-		  <p id="skillissue">it's not that deep... be smarter...</p>
 		</td>
 		<td id="out">
 			{% for line in lines %}
-				<p class='tooltip' style='text-decoration: underline {{line[1]}}; text-decoration-thickness: 4px;'>
+				<p class='tooltip' literary-type="{{line[1]}}">
 					{% for i in line[0] %}
 						{{i}}
 					 {% endfor %}
@@ -35,11 +34,11 @@
 
 <div class = 'key' >
 	<h3>LEGEND</h3>
-	<span class = metaphor>Metaphor</span><br>
-	<span class = character>Characterization</span><br>
-	<span class = imagery>Imagery</span><br>
-	<span class = juxtapose>Juxtaposition</span><br>
-	<span class = none>None</span>
+	<div class = metaphor>Metaphor</div><br>
+	<div class = character>Characterization</div><br>
+	<div class = imagery>Imagery</div><br>
+	<div class = juxtapose>Juxtaposition</div><br>
+	<div class = none>None</div>
 </divl>
 
 {% endblock %}

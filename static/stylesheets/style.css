@@ -51,7 +51,7 @@ h1 {
   font-size: 50px;
 }
 body {
-	background-color: #212121;
+	background-color: #000000;
   font-family: 'Trebuchet MS';
 	margin: 0px;
 }
@@ -101,13 +101,13 @@ td#in, td#out {
 	padding: 30px;
 }
 td#in {
-	background-color: #000000;
+	background-color: #212121;
 	color: #ffffff;
 	padding-top:150px;
 }
 td#out {
 	background-color: #ffffff;
-	color: #000000;
+	color: #212121;
 }
 table#ItBurns {
 	width: 100%;
@@ -212,7 +212,60 @@ input.invertSub:hover {
 .tooltip{
 	position:relative;
 	display:inline-block;
+	padding:0 10px;
+	
 }
+
+.tooltip[literary-type="metaphor"]:before {
+	content: "";
+	position: absolute;
+	background: lightgreen;
+	width: 100%;
+	height: 2px;
+	left:0;
+	bottom:-3px;
+}
+
+.tooltip[literary-type="characterization"]:before {
+	content: "";
+	position: absolute;
+	background: lightblue;
+	width: 100%;
+	height: 2px;
+	left:0;
+	bottom:-3px;
+}
+
+.tooltip[literary-type="imagery"]:before {
+	content: "";
+	position: absolute;
+	background: lightcoral;
+	width: 100%;
+	height: 2px;
+	left:0;
+	bottom:-3px;
+}
+
+.tooltip[literary-type="juxtaposition"]:before {
+	content: "";
+	position: absolute;
+	background: lightsalmon;
+	width: 100%;
+	height: 2px;
+	left:0;
+	bottom:-3px;
+}
+
+.tooltip[literary-type="None"]:before {
+	content: "";
+	position: absolute;
+	background: black;
+	width: 100%;
+	height: 2px;
+	left:0;
+	bottom:-3px;
+}
+
 
 .tooltip .tooltiptext{
 	visibility: hidden;
@@ -238,22 +291,23 @@ input.invertSub:hover {
 }
 
 .key{
+	box-shadow: 0px 0px 10px #000000;
 	position:absolute;
 	top:50%;
 	right:42%;
-	border: 3px solid lightcoral; 
+	border-radius:10px;
 	width: 250px; 
 	height: 250px; 
 	font-size:23px;
-	background-color:lightgoldenrodyellow;
+	background-color:rgba(251,61,82, 1);
 	text-align: center;
 }
 
-.key .metaphor { background-color: lightgreen; }
-.key .character { background-color: lightblue; }
-.key .imagery { background-color: lightcoral; }
-.key .juxtapose { background-color: purple; }
-.key .none {color: white; background-color: black}
+.key .metaphor { color: lightgreen; font-weight:bold;}
+.key .character { color: lightblue; font-weight:bold;}
+.key .imagery { color: darkred;  font-weight:bold;}
+.key .juxtapose { color: purple;  font-weight:bold;}
+.key .none {color: black;  font-weight:bold;}
 
 #aiImage{
 	position:absolute;

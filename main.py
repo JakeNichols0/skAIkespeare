@@ -5,6 +5,7 @@ from html import escape
 import pickle
 import sqlite3
 import hmac
+import requests
 
 app = fk.Flask(__name__)
 
@@ -144,7 +145,7 @@ def analysis():
 
     #metaphor
     if check_line(line)[0][0] == 1:
-      colors.append('lightgreen')
+      colors.append('metaphor')
       accuracies.append(check_line(line)[1][0])
       message += """Metaphor -> """ + str(
           round(check_line(line)[1][0] * 100, 2)) + """% confidence\n"""
@@ -155,7 +156,7 @@ def analysis():
     #characterization
     if check_line(line)[0][1] == 1:
       accuracies.append(check_line(line)[1][1])
-      colors.append('lightblue')
+      colors.append('characterization')
       message += """Characterization -> """ + str(
           round(check_line(line)[1][1] * 100, 2)) + """% confidence\n"""
     else:
@@ -164,7 +165,7 @@ def analysis():
 
     #imagery
     if check_line(line)[0][2] == 1:
-      colors.append('lightcoral')
+      colors.append('imagery')
       accuracies.append(check_line(line)[1][2])
       message += """Imagery -> """ + str(round(
           check_line(line)[1][2] * 100, 2)) + """% confidence\n"""
@@ -174,19 +175,20 @@ def analysis():
 
     #juxtaposition
     if check_line(line)[0][3] == 1:
-      colors.append('purple')
+      colors.append('juxtaposition')
       accuracies.append(check_line(line)[1][3])
       message += """Juxtaposition -> """ + str(
           round(check_line(line)[1][3] * 100, 2)) + """% confidence\n"""
     else:
-      colors.append('None')
+      colors.append('noColor')
       accuracies.append(0)
+      finalColor = 'noColor'
     print(message)
 
     finalColor = ""
     minAccuracy = -1
     for i in range(0, len(colors)):
-      if colors[i] != "None":
+      if colors[i] != "noColor":
         if accuracies[i] > minAccuracy:
           minAccuracy = accuracies[i]
           finalColor = colors[i]
@@ -199,7 +201,31 @@ def analysis():
     messageArr[-1] = messageArr[-1].strip()
     print(textSplit)
     lines.append([lineFinal, finalColor, messageArr])
-    imageLink = """https://ai-studio-assets.limewire.media/u/929f5c8f-d590-4a01-bea9-c984a2fa310a/image/4b36e33c-df47-47f7-b469-4e2d7b369e31?Expires=1715535725&Signature=v-koYYhLMqo0maVHXZpCQkKU2agvOrQO4u2giC~OaYA8BlnLZsMAsZWqX4JiKnIRcfMqYIfl3iEnIrq67FGDtl8fpQmxDXBJaybOF4Cwi3Lb2aHzfS5zwOEqoecCEXrlqybuyEIvKnZeNQvzaBQhFLvpo9qQcQFW0yGOwxDS9uB9-7rMtyyj0unDQfbWt2985jt~SrcMmN5Jrx79MUch7FKr8ba7y5Lt9zotXV80BfLzZCVMfBcBP7Lz1r5JwKhlc-TuSxaQnU~nD0hLWs0Qq8G6Td11YSuVzuI3lmEx9W2IPQV1bDNj7q9YybCqjyMd6mpmQQ8ci1pTGEh1GwS-WA__&Key-Pair-Id=K1U52DHN9E92VT"""
+    # import requests
+
+    # url = "https://api.limewire.com/api/image/generation"
+
+    # payload = {
+    #     "prompt": """Generate an image that describes the following scene:
+    #   A flickering candle beside the clock represents life. It burns brightly for a short while but eventually goes out, leaving only darkness.The scene depicts life as a meaningless play, a performance by a foolish actor who worries and struts for a brief time before disappearing into oblivion.The whole scene is a commentary on the transient nature of life and the emptiness of our pursuits, symbolized by the clock, the shadows, the candle, and the play.""",
+    #     "aspect_ratio": "1:1"
+    # }
+
+    # headers = {
+    #     "Content-Type":
+    #     "application/json",
+    #     "X-Api-Version":
+    #     "v1",
+    #     "Accept":
+    #     "application/json",
+    #     "Authorization":
+    #     "Bearer insert API Key HERE"
+    # }
+
+    # response = requests.post(url, json=payload, headers=headers)
+
+    # imageLink = response.json()['asset_url']
+    imageLink = """https://ai-studio-assets.limewire.media/u/929f5c8f-d590-4a01-bea9-c984a2fa310a/image/0f3cdb1d-e6be-49f9-a808-363b652351a9?Expires=1715621301&Signature=r0OHZIHme8pUe7~2h3VHgASprjytxIyAccpI6KEElHpSkeWBr8OIJ28hnX6-BoXx9ONOCr1~Bne3rzZ1~4iWThSovuwey6RHIxFeMmhrlFJXg0K-cmez2~e0gsVNUZULHepv-WubaKR13qv29BYp2o2P-tptTk-gDqLK0i~e9tL~~XhTEBry9cxiQ2DZYXoYSWN7-tUMVzi8C7Zr27o2Fx4kKpxECVlHMQlJ43yKta7KjQswX7ykt5TdCOJrbOgwIMFI3HE0BIsphIzKDIOYKCs3UVbN3aiqiUI0K4LFOS7x9GEs4jsMiLbDgjqvA9FysqpeRw8HTrr3~~luBQGpSA__&Key-Pair-Id=K1U52DHN9E92VT"""
   return rt("analysis.html", text_in=textSplit, lines=lines, link=imageLink)
 
 
