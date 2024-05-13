@@ -1,19 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Our analysis...</h1>
+<button onclick="window.location.href='/'" class="back">Back</button>
 <table id="ItBurns">
 	<tr>
-		<td id="in">
-		  <p class="input">{{text_in}}</p>
+			<td id="in">
+					<div classs = "enterText"><h2>Entered Text</h2></div>
+					<h4 style='text-decoration: underline' >You asked us to analyze the following literature:</h4>
+		  <p class="input">
+				{% for j in text_in %}
+					{{j}}<br><br>
+				 {% endfor %}
+			</p>
 		  <p id="skillissue">it's not that deep... be smarter...</p>
 		</td>
 		<td id="out">
-			<p id="Green">Green = Metaphor</p>
 			{% for line in lines %}
-			<p style='background-color:{{line[1]}};'>{{line[0]}}</p>
+				<p class='tooltip' style='text-decoration: underline {{line[1]}}; text-decoration-thickness: 4px;'>
+					{% for i in line[0] %}
+						{{i}}
+					 {% endfor %}
+					<span class="tooltiptext">
+					 {% for para in line[2] %}
+						{{para}}<br>
+					 {% endfor %}
+				</span>
+				</p> <br>
 			{% endfor %}
 		</td>
+		<!-- <button onclick ="location.href = {{link}}" id ='aiImage'>View Generated AI Image.</button> -->
+		<a target = "_blank" href="{{link}}"><button id='aiImage'>View Generated AI Image.</button></a>
 	</tr>
 </table>
+
+<div class = 'key' >
+	<h3>LEGEND</h3>
+	<span class = metaphor>Metaphor</span><br>
+	<span class = character>Characterization</span><br>
+	<span class = imagery>Imagery</span><br>
+	<span class = juxtapose>Juxtaposition</span><br>
+	<span class = none>None</span>
+</divl>
 
 {% endblock %}

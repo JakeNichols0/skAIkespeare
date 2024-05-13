@@ -1,33 +1,95 @@
 {% extends 'base.html' %}
 {% block content %}
-<table>
-	<tr>
-		<td>
-			<h1>Sign Up</h1>
-		</td>
-		<td>
-			<h1>Log In</h1>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<form>
-				<label>Username</label>
-				<input type="text">
-				<label>Password</label>
-				<input type="password">
-				<label>Confirm Password</label>
-				<input type="password">
-			</form>
-		</td>
-		<td>
-			<form>
-				<label>Username</label>
-				<input type="text">
-				<label>Password</label>
-				<input type="password">
-			</form>
-		</td>
-	</tr>
-</table>
+<style>
+	div.animate {
+		animation-duration: 3s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+	}
+	@keyframes disapeer {
+		from {width:50%; display: block;}
+		to {width: 0%; display: none;}
+	}
+	@keyframes widen {
+		from {width: 50%; display: block;}
+		to {width: 100%; display: none;}
+	}
+	@keyframes vanish {
+		from {display: block;}
+		to {display: none;}
+	}
+	@keyframes look {
+		from {font-size: 48px;}
+		to {font-size: 1px;}
+	}
+</style>
+{% if not(error[0]) and not(error[1]) %}
+	<div id="front" class="animate">
+		<div id="signUp" class="animate">
+			<h1 id="hSignUp" class="animate">Sign Up</h1>
+		</div>
+		<div id="logIn" class="animate">
+			<h1 class="flog" id="hLogIn" class="animate">Log In</h1>
+		</div>
+	</div>
+{% endif %}
+{% if not(error[1]) %}
+	<div id="signLog">
+		<h1>Sign Up</h1>
+		<form method="post" action="/login" id="sign">
+			<input type="hidden" name="tim" value="sign">
+			<label class="tree">Username</label>
+			<input type="text" name="user"  class="tree" value="{{u[0]}}">
+			<br>
+			<label class="tree">Password</label>
+			<input type="password" name="pass" class="tree" value="{{p[0]}}">
+			<br>
+			<label class="tree">Confirm Password</label>
+			<input type="password" name="con" class="tree" value="{{c}}">
+			<br>
+			<input type="submit" class="sub">
+		</form>
+		<p class="plog">{{error[0]}}</p>
+	</div>
+{% endif %}
+{% if not(error[0]) %}
+	<div id="logSign">
+		<h1 class="flog">Log In</h1>
+		<form method="post" action="/login" id="log">
+			<input type="hidden" name="tim" value="log">
+			<label class="tree flog">Username</label>
+			<input type="text" name="user1" class="tree" value="{{u[1]}}">
+			<br>
+			<label class="tree flog">Password</label>
+			<input type="password" name="pass1" class="tree" value="{{p[1]}}">
+			<br>
+			<input type="submit" class="invertSub">
+		</form>
+		<p class="flog plog">{{error[1]}}</p>
+	</div>
+{% endif %}
+{% if not(error[0]) and not(error[1]) %}
+	<script>
+		document.getElementById('signUp').addEventListener('click', function() {
+			document.getElementById('logIn').style.animationName = 'disapeer';
+			document.getElementById('signUp').style.animationName = 'widen';
+			document.getElementById('hLogIn').style.animationName = 'look';
+			document.getElementById('front').style.animationName = 'vanish';
+			document.getElementById('signLog').style.display = 'block';
+		});
+		document.getElementById('logIn').addEventListener('click', function() {
+			document.getElementById('signUp').style.animationName = 'disapeer';
+			document.getElementById('logIn').style.animationName = 'widen';
+			document.getElementById('hSignUp').style.animationName = 'look';
+			document.getElementById('front').style.animationName = 'vanish';
+			document.getElementById('logSign').style.display = 'block';
+		});
+	</script>
+{% else %}
+	<style>
+		div#signLog, div#logSign {
+			display: block;
+		}
+	</style>
+{% endif %}
 {% endblock %}

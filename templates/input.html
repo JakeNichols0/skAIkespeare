@@ -1,17 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="logDiv">
-  <button id="log">Sign in</button>
+  {% if request.cookies.get("login") %}
+  <p class="username">{{ request.cookies.get("login").split()[0] }}</p>
+  <div id="userDrop">
+    <ul>
+      <li id="logout">Logout</li>
+    </ul>
+  </div>
+  {% else %}
+  <a href="/login"><button id="log">Sign in</button></a>
+  {% endif %}
 </div>
-<h1><b>Welcome to ShAIkespeare!</b></h1>
+<h1><b>Welcome to Sh<span class="tim">AI</span>kespeare!</b></h1>
 <p id="AI"> The AI that will help you read Shakespeare with the help of image-generation AI!</p>
 <div>
-  <form action="/" method="post">
+  <form action="/" method="post" class="welcome">
     <textarea name="text" rows="30" cols="60" placeholder="Enter text here...." value="{{text}}"></textarea>
     <br>
     <input type="submit" class="sub">
   </form>
   <p id="error">{{error}}</p>
 </div>
+{% for aText in texts %}
+<div class="previousTexts">
+  <p class="prevText">{{aText[0]}}</p>
+</div>
+{% endfor %}
 
+<script>
+  document.getElementsByClassName("username")[0].addEventListener('click', function() {
+    document.getElementById("userDrop").style.display = "block";
+  });
+  document.getElementById("logout").addEventListener("click", function() {
+    document.cookie = "login=; expires=Sun, 20 Apr 1969 00:00:00 UTC; path=/;";
+    window.location.href = "/";
+  });
+</script>
 {% endblock %}

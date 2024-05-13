@@ -1,23 +1,24 @@
 input.sub, button {
-	background-color: #212121;
-	color: #fb3d52;
+	background-color: #fb3d52;
+	color: #212121;
 	width: 100px;
 	height: 50px;
-	border: 1px solid #212121;
+	border: 1px solid #fb3d52;
 	border-radius: 15px;
 	font-weight: 800;
 	font-size: 14px;
   font-family: 'Trebuchet MS';
 }
 input.sub:hover, button:hover {
-	background-color: #3e4770;
+	background-color: #c8041b;
+	border-color: #c8041b;
 }
 textarea {
 	border: 1px solid #212121;
 	border-radius: 10px;
 	width: 50vw;
 }
-form {
+form.welcome {
 	margin-left: 25vw;
 	margin-right: 25vw;
 }
@@ -25,25 +26,34 @@ form {
   font-size: 14px;
 	font-family: 'Trebuchet MS';
   border-radius: 10px;
-  color: #ff0000;
+  color: #fb3d52;
   text-align: center;
 }
+div.previousTexts{
+	background-color: #fb3d52;
+}
+p.prevText{
+	color:white;
+	font-size: 14px;
+	font-family: 'Trebuchet MS';
+}
+
 h1 {
 	font-family: "sabbath-black", serif;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 48px;
-  border-radius: 10px;
-  color: #ff0000;
+  color: #fb3d52;
   text-align: center;
 }
 #error{
-  color: #ff0000;
+  color: #fb3d52;
   font-size: 50px;
 }
 body {
 	background-color: #212121;
   font-family: 'Trebuchet MS';
+	margin: 0px;
 }
 p.input {
 	color: #ffffff;
@@ -51,13 +61,49 @@ p.input {
 #skillissue {
   color: #000000;
 }
+.enterText{
+	text-align:center;
+}
+h2{
+	position:absolute;
+	font-size:80px;
+	text-align:center;
+	width:45%;
+	top:10%;
+}
+p.username {
+	color: #fb3d52;
+	text-align: right;
+}
+div#userDrop {
+	float: right;
+	display: none;
+	border: 1px solid #fb3d52;
+	border-radius: 15px;
+	background-color: #1a1a1a;
+}
+div#userDrop ul {
+	list-style: none;
+	color: #fb3d52;
+	text-align: left;
+}
+
+h4{
+	position:absolute;
+	font-size:20px;
+	text-align:center;
+	width:45%;
+	top:25%;
+}
 td#in, td#out {
+	text-align:center;
 	width: 50%;
-	padding: 10px;
+	padding: 30px;
 }
 td#in {
 	background-color: #000000;
 	color: #ffffff;
+	padding-top:150px;
 }
 td#out {
 	background-color: #ffffff;
@@ -70,13 +116,152 @@ table#ItBurns {
 #Green {
 	color: lightgreen;
 }
-#log {
+button#log {
 	float: right;
+}
+button.back{
+	position: absolute;
+	z-index: 1;
+	top: 10px;
+	left: 10px;
 }
 div.logDiv {
 	overflow: auto;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 2;
 }
 label {
 	font-family: 'Trebuchet MS';
 	color: #fb3d52;
+}
+span.tim {
+	font-family: "input-mono", monospace;
+	font-weight: 200;
+	font-style: normal;
+}
+/*Login stuff*/
+div#front {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 69;
+}
+div#signUp {
+	width: 50%;
+	height: 100vh;
+	float: left;
+	background-color: #212121; 
+}
+div#logIn {
+	width: 50%;
+	height: 100vh;
+	float: left;
+	background-color: #fb3d52;
+}
+.flog {
+	color: #212121;
+}
+div#signLog, div#logSign {
+	width: 100vw;
+	height: 90vh;
+	display: none;
+	padding-top: 10vh;
+}
+div#signLog form, div#logSign form {
+	margin: auto;
+	max-width: 200px;
+}
+.tree {
+	display: block;
+	margin: 2px;
+}
+div#signLog h1, div#logSign h1 {
+	margin-top: 0px;
+	width: 100%;
+}
+p.plog {
+	text-align: center;
+}
+div#signLog {
+	background-color: #212121;
+	color: #fb3d52;
+}
+div#logSign {
+	background-color: #fb3d52;
+}
+input.invertSub {
+	background-color: #212121;
+	color: #fb3d53;
+	width: 100px;
+	height: 50px;
+	border: 1px solid #212121;
+	border-radius: 15px;
+	font-weight: 800;
+	font-size: 14px;
+	font-family: 'Trebuchet MS';
+}
+input.invertSub:hover {
+	background-color: #111111;
+	border-color: #111111;
+}
+
+.tooltip{
+	position:relative;
+	display:inline-block;
+}
+
+.tooltip .tooltiptext{
+	visibility: hidden;
+	width: 350px;
+	color:#ed8e8e;
+	text-align:center;
+	border-radius:6px;
+	padding:5px 0;
+	position: absolute;
+	z-index: 1;
+	border: 3px solid #ed8e8e;
+	bottom: 150%;
+	left:10%;
+	margin-left:-60px;
+	background-color: #292b29;
+	transition: opacity 10s ease;
+	display:inline-block;
+}
+
+.tooltip:hover .tooltiptext{
+	visibility:visible;
+	opactiy:1;
+}
+
+.key{
+	position:absolute;
+	top:50%;
+	right:42%;
+	border: 3px solid lightcoral; 
+	width: 250px; 
+	height: 250px; 
+	font-size:23px;
+	background-color:lightgoldenrodyellow;
+	text-align: center;
+}
+
+.key .metaphor { background-color: lightgreen; }
+.key .character { background-color: lightblue; }
+.key .imagery { background-color: lightcoral; }
+.key .juxtapose { background-color: purple; }
+.key .none {color: white; background-color: black}
+
+#aiImage{
+	position:absolute;
+	left:615px;
+	top:700px;
+	width:300px;
+	height:40px;
+	margin-bottom:10px;
+	font-size:20px;
+	
 }

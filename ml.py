@@ -52,12 +52,3 @@ if (modelAns == 1):
   print("This is a metaphor.")
 else:
   print("This is not a metaphor.")
-
-
-
-
-
-
-
-  
-  
