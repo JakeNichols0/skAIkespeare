@@ -297,7 +297,8 @@ input.invertSub:hover {
 	right:42%;
 	border-radius:10px;
 	width: 250px; 
-	height: 250px; 
+	height: auto; 
+	padding-bottom: 20px;
 	font-size:23px;
 	background-color:rgba(251,61,82, 1);
 	text-align: center;

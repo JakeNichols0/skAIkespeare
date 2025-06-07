@@ -5,12 +5,9 @@ from html import escape
 import pickle
 import sqlite3
 import hmac
-import requests
+#import requests
 
 app = fk.Flask(__name__)
-
-if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=80)
 
 
 def load_input(text="", error="", texts=[]):
@@ -226,7 +223,7 @@ def analysis():
 
     # imageLink = response.json()['asset_url']
     imageLink = """https://ai-studio-assets.limewire.media/u/929f5c8f-d590-4a01-bea9-c984a2fa310a/image/0f3cdb1d-e6be-49f9-a808-363b652351a9?Expires=1715621301&Signature=r0OHZIHme8pUe7~2h3VHgASprjytxIyAccpI6KEElHpSkeWBr8OIJ28hnX6-BoXx9ONOCr1~Bne3rzZ1~4iWThSovuwey6RHIxFeMmhrlFJXg0K-cmez2~e0gsVNUZULHepv-WubaKR13qv29BYp2o2P-tptTk-gDqLK0i~e9tL~~XhTEBry9cxiQ2DZYXoYSWN7-tUMVzi8C7Zr27o2Fx4kKpxECVlHMQlJ43yKta7KjQswX7ykt5TdCOJrbOgwIMFI3HE0BIsphIzKDIOYKCs3UVbN3aiqiUI0K4LFOS7x9GEs4jsMiLbDgjqvA9FysqpeRw8HTrr3~~luBQGpSA__&Key-Pair-Id=K1U52DHN9E92VT"""
-  return rt("analysis.html", text_in=textSplit, lines=lines, link=imageLink)
+  return rt("analysis.html", text_in=textSplit, lines=lines)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -305,3 +302,6 @@ def makeSecure(p):
   b = "Jake"
   s = bytes(b, 'utf-8')
   return hmac.new(s, str(p).encode("utf-8"), "md5").hexdigest()
+
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=80)
