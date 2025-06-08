@@ -287,7 +287,7 @@ def login():
         passW = w.fetchone()
         if (passW and passW[0] == (makeSecure(p))):
           resp = fk.make_response(
-              rt("login.html", error=["", ""], u=["", ""], p=["", ""], c=""))
+              load_input())
           resp.set_cookie("login", u + " " + makeSecure(p))
           return resp
         return rt("login.html",

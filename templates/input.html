@@ -30,7 +30,12 @@
 
 <script>
   document.getElementsByClassName("username")[0].addEventListener('click', function() {
-    document.getElementById("userDrop").style.display = "block";
+    let ud = document.getElementById("userDrop");
+    if(ud.style.display == "none") {
+      ud.style.display = "block";
+    } else {
+      ud.style.display = "none";
+    }
   });
   document.getElementById("logout").addEventListener("click", function() {
     document.cookie = "login=; expires=Sun, 20 Apr 1969 00:00:00 UTC; path=/;";
